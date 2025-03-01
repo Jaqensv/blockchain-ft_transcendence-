@@ -1,14 +1,14 @@
 const { ethers } = require("ethers"); // Utilisation de CommonJS
+require("dotenv").config();
 const fs = require("fs"); // Charger le module File System
 const hre = require("hardhat"); // Charger Hardhat
 
 async function main() {
     // Connexion au réseau Avalanche
-    // const provider = new ethers.providers.JsonRpcProvider("https://api.avax.network/ext/bc/C/rpc"); // Avalanche Mainnet
-    const provider = new ethers.JsonRpcProvider("https://api.avax-test.network/ext/bc/C/rpc"); // Avalanche Fuji Testnet
+    const provider = new ethers.JsonRpcProvider(process.env.RPC_URL); // Avalanche Fuji Testnet
 
     // Charger le wallet avec le provider
-    const deployer = new ethers.Wallet("0x35da811fc499d4a125ee41edfc4359475d7e7b4ddb811ac8bb157a6deec7cbba", provider);
+    const deployer = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 
     console.log("Deploying contracts with the account:", deployer.address);
 
