@@ -1,7 +1,7 @@
-const { ethers } = require("ethers"); // Utilisation de CommonJS
-require("dotenv").config();
-const fs = require("fs"); // Charger le module File System
-const hre = require("hardhat"); // Charger Hardhat
+import { ethers } from "ethers"; // Utilisation de ESM
+import "dotenv/config"; // Charger les variables d'environnement
+import fs from "fs"; // Charger le module File System
+import hre from "hardhat"; // Charger Hardhat
 
 async function main() {
     // Connexion au réseau Avalanche
@@ -21,11 +21,11 @@ async function main() {
     // Attendre la fin du déploiement
     await contract.waitForDeployment();
 
-    //console.log("✅ PONGcontract deployed at:", contract.address);
-    console.log(contract.target);
+    console.log("✅ PONGcontract deployed at:", contract.target);
     console.log(contract.deploymentTransaction()?.hash);
 }
 
+// Exécuter le script en gérant les erreurs
 main()
     .then(() => process.exit(0))
     .catch((error) => {

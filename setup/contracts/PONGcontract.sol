@@ -5,9 +5,10 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract PONGcontract is ERC20 {
 
-constructor() ERC20("PONG token", "PONG") {
-    _mint(msg.sender, 1000 * 10 ** decimals());
-}
+    constructor() ERC20("PONG token", "PONG") {
+        _mint(msg.sender, 1000 * 10 ** decimals());
+    }
+
     mapping(address => string) players_with_address;
     mapping(string => address) address_with_players;
     mapping(string => uint) scores;
